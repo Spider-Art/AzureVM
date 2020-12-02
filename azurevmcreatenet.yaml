@@ -1,6 +1,6 @@
 ---
 - name: azurevmcreatenet
-  hosts: all
+  hosts: localhost
 
   tasks:
 
@@ -9,7 +9,7 @@
       resource_group: Test
      name: Test-vnet
       address_prefixes: "10.10.0.0/16"
-      
+
   - name: Add subnet
     azure_rm_subnet:
       resource_group: Test
