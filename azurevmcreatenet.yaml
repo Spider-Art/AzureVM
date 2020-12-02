@@ -1,6 +1,6 @@
 ---
 - name: azurevmcreatenet
-  hosts: all
+  hosts: localhost
 
   tasks:
 
