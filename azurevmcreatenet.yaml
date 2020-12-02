@@ -22,15 +22,3 @@
       resource_group: Test
       allocation_method: Dynamic
       name: test01-ip
-
-  - name: Create security group that allows SSH
-      azure_rm_securitygroup:
-        resource_group: Test
-        name: secgroup001
-        rules:
-          - name: SSH
-            protocol: Tcp
-            destination_port_range: 22
-            access: Allow
-            priority: 101
-            direction: Inbound
