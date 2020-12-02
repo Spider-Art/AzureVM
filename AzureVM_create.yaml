@@ -1,13 +1,13 @@
 - name: Create storage account
   azure_rm_storageaccount:
     resource_group: Testing
-    name: testaccount001
+    name: testdisk_001
     account_type: Standard_LRS
 
 - name: Create virtual network
   azure_rm_virtualnetwork:
     resource_group: Testing
-    name: testvn001
+    name: Test-vnet
     address_prefixes: "10.10.0.0/16"
 
 - name: Add subnet
@@ -15,13 +15,13 @@
     resource_group: Testing
     name: subnet001
     address_prefix: "10.10.0.0/24"
-    virtual_network: testvn001
+    virtual_network: Test-vnet
 
 - name: Create public ip
   azure_rm_publicipaddress:
     resource_group: Testing
-    allocation_method: Static
-    name: publicip001
+    allocation_method: Dynamic
+    name: test01-ip
 
 - name: Create security group that allows SSH
     azure_rm_securitygroup:
@@ -41,22 +41,22 @@
     name: testnic001
     virtual_network: testvn001
     subnet: subnet001
-    public_ip_name: publicip001
+    public_ip_name: test01-ip
     security_group: secgroup001
 
 - name: Create virtual machine
   azure_rm_virtualmachine:
     resource_group: Testing
     name: testvm001
-    vm_size: Standard_D1
-    storage_account: testaccount001
+    vm_size: Standard_D1_v2
+    storage_account: testdisk_001
     storage_container: testvm001
     storage_blob: testvm001.vhd
-    admin_username: admin
-    admin_password: Password!
+    admin_username: user01
+    admin_password: User)!user01user01
     network_interfaces: testnic001
     image:
       offer: CentOS
       publisher: OpenLogic
-      sku: '7.1'
+      sku: '8_2'
       version: latest
