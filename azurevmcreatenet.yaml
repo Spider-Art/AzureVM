@@ -5,9 +5,9 @@
   tasks:
 
   - name: Create virtual network
-    azure_rm_virtualnetwork:
+    azure.azcollection.azure_rm_virtualnetwork:
       resource_group: Test
-     name: Test-vnet
+      name: Test-vnet
       address_prefixes: "10.10.0.0/16"
 
   - name: Add subnet
